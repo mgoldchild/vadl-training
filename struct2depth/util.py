@@ -238,7 +238,7 @@ def matches(mvname, ckpt_var_names):
 
 def format_number(n):
   """Formats number with thousands commas."""
-  locale.setlocale(locale.LC_ALL, 'en_US')
+  locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
   return locale.format('%d', n, grouping=True)
 
 
