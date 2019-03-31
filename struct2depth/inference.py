@@ -129,8 +129,8 @@ flags.mark_flag_as_required('model_ckpt')
 
 def _run_inference(output_dir=None,
                    file_extension='jpg',
-                   depth=False,
-                   egomotion=True,
+                   depth=True,  # TODO: changed
+                   egomotion=False, # TODO: changed
                    model_ckpt=None,
                    input_dir=None,
                    input_list_file=None,
@@ -167,7 +167,6 @@ def _run_inference(output_dir=None,
     logging.info('Predictions will be saved in %s.', output_dir)
 
     # Collect all images to run inference on.
-    print(input_dir)
     im_files, basepath_in = collect_input_images(input_dir, input_list_file,
                                                  file_extension)
     if shuffle:
@@ -179,7 +178,6 @@ def _run_inference(output_dir=None,
     output_dirs = create_output_dirs(im_files, basepath_in, output_dir)
 
     # Run depth prediction network.
-    depth = False # TODO: Fix this hack line here
     if depth:
       im_batch = []
       for i in range(len(im_files)):
